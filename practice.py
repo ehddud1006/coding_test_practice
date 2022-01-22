@@ -1,40 +1,35 @@
-from collections import deque
+import sys
 
 N = int(input())
+want = list(map(int,input().split()))
+budget = int(input())
 
-graph = []
-visited = [[False] * N for _ in range(N)]
-
-for i in range(N):
-    graph.append(list(map(int,input().split())))
-
-# print(graph)
-
-dx = [0,1]
-dy = [1,0]
-
-def bfs(x,y) :
-    queue = deque()
-    queue.append((x,y))
-    # print(queue)
-    while queue:
-        x, y = queue.popleft()
-        go = graph[x][y]
+all_sum = sum(want)
+max_want = max(want)
+mid = 0
+if all_sum <= budget :
+    print(max_want)
+else :
+    start = 0
+    end = max_want
+    mid = (start+end)//2
+    while start <= end :
         
-        for i in range(2):
-            nx = x + dx[i]*go
-            ny = y + dy[i]*go
-            
-            if nx<0 or ny<0 or nx>=N or ny>=N :
-                continue
-            
-            if visited[nx][ny]==False :
-                queue.append((nx,ny))
-                visited[nx][ny]= True
-    
-    if visited[N-1][N-1] == True :
-        print("HaruHaru")
-    else:
-        print("Hing")           
+        all_budget = 0
+        for i in range(N):                
+            if mid > want[i]:
+                all_budget += want[i]
+            else:
+                all_budget += mid
         
-bfs(0,0)
+        if all_budget==budget :
+            break
+        
+        elif all_budget>budget :
+            end = mid-1
+        
+        else :
+            start = mid+1
+        mid = (start+end)//2
+print(mid)
+                
