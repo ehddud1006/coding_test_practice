@@ -24,12 +24,12 @@ def prime_list(n):
     return [i for i in range(2, n) if sieve[i] == True]
 
 prime = prime_list(mmax[N])
-
+print(prime)
 for i in range(len(prime)-1) :
     for j in range(i+1, len(prime)) :
         if prime[i]+prime[j] <= mmax[N] :
             sol1.add(prime[i]+prime[j])
-        
+print(sol1)       
 if N==1 :
     sol2 = [1,2,3,4,5,6,7,8,9]
 elif N==2:
@@ -68,13 +68,15 @@ for i in range(len(prime)) :
     for j in range(len(prime)) :
         if prime[i]*prime[j] <= mmax[N] :
             plz.add(prime[i]*prime[j])
-                     
+print(plz)
+
 for i in range(len(sol2)):
     n=sol2[i]
     if n in sol1:
         while n%K==0 :
             n //= K
         if n in plz :
+            print(sol2[i])
             count +=1
 
 print(count)
