@@ -1,25 +1,32 @@
-import sys
-from collections import deque
-from typing import List
+import math
+N = int(input())
 
-input = sys.stdin.readline
+def divide(depth,N):
+    expo = 1
+    if N==1 :
+        if depth % 2 == 0 :
+            print(0)
+            return
+        else :
+            print(1)
+            return
+    
+    if N==2 :
+        if depth % 2 == 0 :
+            print(1)
+            return
+        else :
+            print(0)
+            return    
+        
+    while True :
+        if int(math.pow(2,expo)) < N and N <= int(math.pow(2,expo+1)) :
+            N = N - int(math.pow(2,expo)) 
+            divide(depth+1,N)
+            break
+        expo +=1 
+        
+    return      
 
 
-def solution() -> List[str]:
-    res_list = []            # res_list: 정답을 담는 배열
-    prefix_sums = [0]        # prefix_sums: 구간합을 담는 배열
-    for idx, val in enumerate(num_list):
-        prefix_sums.append(prefix_sums[-1] + val)
-    while requests:     # requests: 입력받은 m개의 요청 구간(왼쪽, 오른쪽 인덱스)들을 담고 있는 덱
-        l, r = requests.popleft()
-        interval_sum = prefix_sums[r] - prefix_sums[l-1]
-        res_list.append(str(interval_sum))
-    return res_list
-
-
-if __name__ == '__main__':
-    n, m = map(int, input().split())
-    num_list = list(map(int, input().split()))
-    requests = deque([tuple(map(int, input().split())) for i in range(m)])
-    sol = solution()
-    print('\n'.join(sol))
+divide(0,N)
