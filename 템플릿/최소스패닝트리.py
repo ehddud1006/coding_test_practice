@@ -5,8 +5,8 @@ input = sys.stdin.readline
 def find_parent(parent, x):
     # 루트 노드가 아니라면, 루트 노드를 찾을 때까지 재귀적으로 호출
     if parent[x] != x:
-        parent[x] = find_parent(parent, parent[x])
-    return parent[x]
+        return find_parent(parent, parent[x])
+    return x
 
 # 두 원소가 속한 집합을 합치기
 def union_parent(parent, a, b):
@@ -37,13 +37,18 @@ for _ in range(e):
 
 # 간선을 비용순으로 정렬
 edges.sort()
-
+step=1
 # 간선을 하나씩 확인하며
 for edge in edges:
     cost, a, b = edge
+    print(step)
+    print(f'{a}: {b}')
+    step+=1
     # 사이클이 발생하지 않는 경우에만 집합에 포함
     if find_parent(parent, a) != find_parent(parent, b):
+        print(parent)
         union_parent(parent, a, b)
+        print(parent)
         result += cost
 
 print(result)
