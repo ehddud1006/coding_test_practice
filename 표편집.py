@@ -34,6 +34,7 @@ def solution(n, k, cmd):
                     cursor = prev
                 elif dic[cursor][0]==None  :
                     dic[next]=[None,dic[next][1]]
+                    cursor = next
                 else :
                     dic[prev]=[dic[prev][0],next]
                     dic[next]=[prev,dic[next][1]]
