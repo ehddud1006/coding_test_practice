@@ -1,11 +1,11 @@
 
 
-gems = ["ZZZ", "YYY", "NNNN", "YYY", "BBB"] 
-
+gems = ["ZZZ", "YYY", "NNNN", "YYY", "BBB"]
 def solution(gems):
     
     # 중복을 제거하기 위해서 
     real_gems_count = len(set(gems))
+    real_gems = set(gems)
     gem_count = {}
     lp = 0
     rp = 0
@@ -34,4 +34,5 @@ def solution(gems):
                 break 
                 
     return answer
+
 solution(gems)
