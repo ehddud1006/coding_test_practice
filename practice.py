@@ -1,37 +1,26 @@
+routes = [[-20,-15], [-14,-5], [-18,-13], [-5,-3]]
+from collections import deque
 
-
-gems = ["ZZZ", "YYY", "NNNN", "YYY", "BBB"] 
-
-def solution(gems):
+def solution(routes):
+    answer = 0
+    routes.sort(key = lambda x: x[0]) # start를 기준으로 정렬
     
-    # 중복을 제거하기 위해서 
-    real_gems_count = len(set(gems))
-    gem_count = {}
-    lp = 0
-    rp = 0
-    
-    len_gems_arr = len(gems)
-    gugan_gili = len(gems)
-    answer = [1,gugan_gili]
-    while rp < len_gems_arr :
-         
-        if gems[rp] in gem_count :
-            gem_count[gems[rp]] +=1 
-        else :
-            gem_count[gems[rp]] = 1 
-
-        rp += 1
+    queue = deque(routes)
+    while queue:
+        start, end = queue.popleft()
         
-        while len(gem_count) == real_gems_count :
-            if gem_count[gems[lp]]>1 :
-                gem_count[gems[lp]] -= 1
-                lp += 1
-            elif rp-lp < gugan_gili :
-                gugan_gili = rp - lp 
-                answer = [lp+1,rp]
+        while queue:
+            if queue[0][0] > end:     # 다음 start가 현재 end보다 클 경우 break => 새로 시작
                 break
-            else :
-                break 
-                
+            elif queue[0][1] < end:   # 다음 end가 현재 end보다 작을 경우 현재 end를 다음 end로 update 후 반복 (즉, 포함되어 있을 경우 더 작은 end로 update) 
+                end = queue[0][1]
+                queue.popleft()
+                continue
+            else:
+                queue.popleft()       # 아무 곳에도 해당하지 않을 경우, 뺴주기만 한 후 반복
+        
+        answer += 1
+    
     return answer
-solution(gems)
+
+solution(routes)
