@@ -1,31 +1,35 @@
-n=3
-computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
-from collections import deque
-def solution(n, computers):
-    roots = [node for node in range(n)]
+number = "1924"
+k = 2
 
-    def find_root(x: int) -> int:
-        if roots[x] == x:
-            return x
-        
-        roots[x] = find_root(roots[x])
-        return roots[x]
+from collections import deque, defaultdict
+
+def solution(number, k):
+    num_cnt = defaultdict(int)
+    choice_dq = deque()
+    for i in range(k):
+        num = number[i]
+        num_cnt[num] += 1
+        choice_dq.append(num)
     
-    def union(a: int, b: int):
-        root_a = find_root(a)
-        root_b = find_root(b)
+    result = []
+    i = k
+    while i < len(number):
+        num = number[i]
+        num_cnt[num] += 1
+        choice_dq.append(num)
         
-        if root_a > root_b:
-            root_a, root_b = root_b, root_a
+        max_num = max(num_cnt.keys())
+        result.append(str(max_num))
+        while True:
+            pn = choice_dq.popleft()
+            num_cnt[pn] -= 1
+            if num_cnt[pn] == 0:
+                num_cnt.pop(pn)
+            if pn == max_num:
+                break
+        i += 1
         
-        roots[root_b] = root_a
-        
-    for i in range(n):
-        for j in range(i + 1, n):
-            if computers[i][j] == 1:
-                union(i, j)
-    
-    answer = len(set([find_root(node) for node in range(n)]))
+    answer = ''.join(result)
     return answer
 
-solution(n,computers)
+solution(number,k)

@@ -19,6 +19,7 @@ def solution(n, weak, dist):
             # (10,13,18,22)라고 생각하고 디버깅
             for start_idx in range(len(weak)):
                 friend_dq = deque(order_case)
+                
                 weak_dq = deque(weak[start_idx:] + [x + n for x in weak[:start_idx]])
                 while friend_dq and weak_dq:
                     # 검사할 수 있는 범위를 계산
