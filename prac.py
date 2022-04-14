@@ -22,7 +22,7 @@ def solution(number, k):
         result.append(str(max_num))
         while True:
             pn = choice_dq.popleft()
-            num_cnt[pn] -= 1
+            num_cnt[pn] -=1
             if num_cnt[pn] == 0:
                 num_cnt.pop(pn)
             if pn == max_num:
