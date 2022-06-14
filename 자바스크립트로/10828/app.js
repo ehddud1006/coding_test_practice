@@ -2,6 +2,8 @@ const fs = require("fs");
 
 BOJkey = true;
 
+console.time("code_measure");
+
 var input = fs
   .readFileSync(BOJkey ? "./자바스크립트로/10828/input.txt" : "./dev/stdin")
   .toString()
