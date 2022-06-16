@@ -14,12 +14,13 @@ var input = fs
       .map((x) => +x)
   );
 const [n, m] = input.shift();
-let arr = new Array(m);
-let array = [];
-arr.fill(0);
-for (let i = 0; i < n; i++) {
-  array.push([...arr]);
-}
+// let arr = new Array(m);
+// let array = [];
+// arr.fill(0);
+// for (let i = 0; i < n; i++) {
+//   array.push([...arr]);
+// }
+let array = Array.from(Array(n), () => Array(m).fill(0));
 // console.log(array);
 // console.log(arr);
 // console.log(input);
