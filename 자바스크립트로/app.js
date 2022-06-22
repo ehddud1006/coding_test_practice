@@ -10,11 +10,9 @@ function solution(n) {
       arr[j] = false;
     }
   }
-  console.log(arr);
   for (let i = 2; i <= n; i++) {
     if (arr[i]) answer += 1;
   }
-  console.log(answer);
   return answer;
 }
 solution(n);
