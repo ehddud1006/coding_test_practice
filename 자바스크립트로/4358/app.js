@@ -31,6 +31,7 @@ for (let tree of dic) {
   strr = tree[0] + ` ${per}`;
   result.push(strr);
 }
+//
 
 result.sort();
 console.log(result.join("\n"));
