@@ -12,6 +12,7 @@ const strr = input[1];
 let regex = new RegExp(`${strr}`, "g");
 
 let a = input[0].match(regex);
+console.log(a);
 try {
   console.log(a.length);
 } catch {
