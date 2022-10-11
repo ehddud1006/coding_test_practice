@@ -1,0 +1,24 @@
+{
+  "name": "coding_test_practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehddud1006/coding_test_practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ehddud1006/coding_test_practice/issues"
+  },
+  "homepage": "https://github.com/ehddud1006/coding_test_practice#readme"
+}
