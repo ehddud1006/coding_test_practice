@@ -5,6 +5,7 @@ const isPrime = number => {
   if (number === 1) return false;
 
   for (let i = 2; i < parseInt(Math.sqrt(number)); i++) {
+    // 왜 Math.sqrt까지만 탐색해도 소수 판별이 가능한가?
     if (number % i === 0) return false;
   }
   return true;
