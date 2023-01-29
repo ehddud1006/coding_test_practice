@@ -41,3 +41,33 @@ console.log(answer);
 
 // 해설해서는 if else 로 분기처리 하지 않고 &&  연산자를 사용하여 우아하게 분기처리를 했다.
 // while (upperP < arr1.length && lowerP < arr2.length)
+
+// ******************************************************
+// 23.01.29
+// 또 못풀었다. 이번에는 정렬을 하지 않고 풀어버렸는데, 작은값의 포인터를 증가시키는 방식에서
+// [1,3,9,5,2]
+// [3,2,5,7,8]
+// lt가 9에서 멈춰버렸다. 따라서 rt 는 계속 증가하여 배열순회가 끝나버리니 [3]밖에 찾을 수가 없었다.
+// 따라서 위와 같은 로직을 사용하기 위해서는 정렬이라는 전제조건이 필요하다.
+
+// const arr1 = [1, 3, 9, 5, 2];
+// const arr2 = [3, 2, 5, 7, 8];
+
+// let [lt, rt] = [0, 0];
+
+// const answer = [];
+
+// arr1.sort();
+// arr2.sort();
+
+// while (lt !== arr1.length && rt !== arr2.length) {
+//   console.log(arr1[lt]);
+//   if (arr1[lt] < arr2[rt]) lt++;
+//   else if (arr1[lt] > arr2[rt]) rt++;
+//   else {
+//     answer.push(arr1[lt++]);
+//     rt++;
+//   }
+// }
+
+// console.log(answer);
