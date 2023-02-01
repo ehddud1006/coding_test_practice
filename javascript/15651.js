@@ -2,15 +2,16 @@ const fs = require('fs');
 
 BOJkey = 1;
 
-let N = fs.readFileSync(BOJkey ? './코딩테스트강의/DFS/바둑이승차/input.txt' : './dev/stdin').toString();
+const [N, K] = fs
+  .readFileSync(BOJkey ? './코딩테스트강의/DFS/바둑이승차/input.txt' : './dev/stdin')
+  .toString()
+  .split(' ')
+  .map(Number);
 
-N = Number(N);
-
-const visited = Array.from({ length: N + 1 }, () => false);
 const temp = [];
 let answer = '';
 const dfs = L => {
-  if (L === N) {
+  if (L === K) {
     answer += temp.join(' ') + '\n';
     return;
   }
