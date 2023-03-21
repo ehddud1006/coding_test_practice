@@ -43,7 +43,7 @@ for (let i = 0; i < N; i++) {
     if (graph[i][j] === 0) {
       size = 0;
       answer++;
-      dfs(i, j, 1);
+      dfs(i, j);
       sizeArr.push(size);
     }
   }
